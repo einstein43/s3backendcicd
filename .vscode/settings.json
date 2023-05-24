@@ -1,0 +1,5 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "appService.defaultWebAppToDeploy": "/subscriptions/6fa25b2e-6571-42a8-89fb-c936d1266437/resourceGroups/S3IP/providers/Microsoft.Web/sites/golftrader",
+    "appService.deploySubpath": "."
+}

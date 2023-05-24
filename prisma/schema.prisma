@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl  = env("SHADOW_DATABASE_URL")
+}
+
+model courses {
+  id     Int      @id(map: "PK__courses__3213E83F16A77A35") @default(autoincrement())
+  name   String?  @db.VarChar(100)
+  length Int?
+  par    Int?
+  rounds rounds[]
+}
+
+model golfers {
+  id       Int      @id(map: "PK__golfers__3213E83F6B9FA65D") @default(autoincrement())
+  fName    String?  @db.VarChar(50)
+  lName    String?  @db.VarChar(50)
+  email    String?  @db.VarChar(100)
+  password String?  @db.VarChar(100)
+  handicap Int?
+  rounds   rounds[]
+}
+
+model rounds {
+  id        Int      @id(map: "PK__rounds__3213E83FF8FBCAED") @default(autoincrement())
+  course_id Int?
+  golfer_id Int?
+  score     Int?
+  courses   courses? @relation(fields: [course_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__rounds__course_i__60A75C0F")
+  golfers   golfers? @relation(fields: [golfer_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__rounds__golfer_i__619B8048")
+}

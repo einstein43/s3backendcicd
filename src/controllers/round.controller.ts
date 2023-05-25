@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { container, inject, injectable } from "tsyringe";
-import { IRoundController } from "../interfaces/round.interface";
+// import { IRoundController } from "../interfaces/round.interface";
 import { Golfer } from "../models/golfer.model";
 import { Round } from "../models/round.model";
 import { GolferService } from "../services/golfer.service";
@@ -11,7 +11,7 @@ container.register("IRoundService", {
 });
 
 @injectable()
-export class RoundController implements IRoundController {
+export class RoundController implements RoundController {
   constructor(@inject("IRoundService") private roundService: RoundService) {
     this.getRoundById = this.getRoundById.bind(this);
     this.postRound = this.postRound.bind(this);

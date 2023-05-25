@@ -1,8 +1,8 @@
-import { IRoundRepository } from "../interfaces/round.interface";
+// import { IRoundRepository } from "../interfaces/round.interface";
 import { Golfer } from "../models/golfer.model";
 import { Round } from "../models/round.model";
 
-export default class RoundRepository implements IRoundRepository {
+export default class RoundRepository implements RoundRepository {
   constructor() {}
 
   public async getRoundById(id: number): Promise<Round> {

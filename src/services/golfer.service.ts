@@ -1,5 +1,5 @@
-import { IGolferService } from "../interfaces/golfer.interface";
-import { IGolferRepository } from "../interfaces/golfer.interface";
+// import { IGolferService } from "../interfaces/golfer.interface";
+// import { IGolferRepository } from "../interfaces/golfer.interface";
 import { container, inject, injectable } from "tsyringe";
 import { Golfer } from "../models/golfer.model";
 import GolferRepository from "../repositories/golfer.repository";
@@ -9,9 +9,9 @@ container.register("IGolferRepository", {
 });
 
 @injectable()
-export class GolferService  {
+export class GolferService {
   constructor(
-    @inject("IGolferRepository") private golferRepository: IGolferRepository
+    @inject("IGolferRepository") private golferRepository: GolferRepository
   ) {
     this.getAllGolfers = this.getAllGolfers.bind(this);
     this.createGolfer = this.createGolfer.bind(this);
@@ -20,25 +20,25 @@ export class GolferService  {
     this.updateGolferById = this.updateGolferById.bind(this);
   }
 
-    public async getAllGolfers(): Promise<void> {
-        const golfers = this.golferRepository.getAllGolfers();
-        return golfers;
-    }
+  public async getAllGolfers(): Promise<Golfer[]> {
+    const golfers: Golfer[] = await this.golferRepository.getAllGolfers();
+    return golfers;
+  }
 
-    public async createGolfer(golfer: Golfer):Promise<void>{
-        await this.golferRepository.createGolfer(golfer);
-    }
-    
-    public async getGolferById(id: number): Promise<void> {
-        const golfer = await this.golferRepository.getGolferById(id);
-        return golfer;
-    }
+  public async createGolfer(golfer: Golfer): Promise<void> {
+    await this.golferRepository.createGolfer(golfer);
+  }
 
-    public async updateGolferById(id:number, golfer: Golfer): Promise<void> {
-        await this.golferRepository.updateGolferById(id, golfer);
-    }
+  public async getGolferById(id: number): Promise<void> {
+    const golfer = await this.golferRepository.getGolferById(id);
+    return golfer;
+  }
 
-    public async deleteGolferById(id: number):Promise<void> {
-        await this.golferRepository.deleteGolferById(id)
-    }
+  public async updateGolferById(id: number, golfer: Golfer): Promise<void> {
+    await this.golferRepository.updateGolferById(id, golfer);
+  }
+
+  public async deleteGolferById(id: number): Promise<void> {
+    await this.golferRepository.deleteGolferById(id);
+  }
 }

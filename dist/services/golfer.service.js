@@ -52,6 +52,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GolferService = void 0;
+// import { IGolferService } from "../interfaces/golfer.interface";
+// import { IGolferRepository } from "../interfaces/golfer.interface";
 var tsyringe_1 = require("tsyringe");
 var golfer_repository_1 = __importDefault(require("../repositories/golfer.repository"));
 tsyringe_1.container.register("IGolferRepository", {
@@ -70,8 +72,12 @@ var GolferService = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var golfers;
             return __generator(this, function (_a) {
-                golfers = this.golferRepository.getAllGolfers();
-                return [2 /*return*/, golfers];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.golferRepository.getAllGolfers()];
+                    case 1:
+                        golfers = _a.sent();
+                        return [2 /*return*/, golfers];
+                }
             });
         });
     };
@@ -127,7 +133,7 @@ var GolferService = /** @class */ (function () {
     GolferService = __decorate([
         (0, tsyringe_1.injectable)(),
         __param(0, (0, tsyringe_1.inject)("IGolferRepository")),
-        __metadata("design:paramtypes", [Object])
+        __metadata("design:paramtypes", [golfer_repository_1.default])
     ], GolferService);
     return GolferService;
 }());

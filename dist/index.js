@@ -47,18 +47,41 @@ var round_controller_1 = require("./controllers/round.controller");
 var app = (0, express_1.default)();
 var golferController = tsyringe_1.container.resolve(golfer_controller_1.GolferController);
 var roundController = tsyringe_1.container.resolve(round_controller_1.RoundController);
+{ /* golfer endpoints */ }
 app.get("/golfer/all", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, _b;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0:
+                _b = (_a = console).log;
+                return [4 /*yield*/, golferController.getAllGolfers(req, res)];
+            case 1:
+                _b.apply(_a, [_c.sent()]);
+                return [4 /*yield*/, golferController.getAllGolfers(req, res)];
+            case 2: return [2 /*return*/, _c.sent()];
+        }
+    });
+}); });
+app.post("/golfer/new", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, golferController.getAllGolfers(req, res)];
+            case 0: return [4 /*yield*/, golferController.createGolfer(req, res)];
             case 1: return [2 /*return*/, _a.sent()];
         }
     });
 }); });
-app.get("/golfer/new", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+app.put("/golfer/update", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, golferController.createGolfer(req, res)];
+            case 0: return [4 /*yield*/, golferController.updateGolferById(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.delete("/golfer/delete", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, golferController.deleteGolferById(req, res)];
             case 1: return [2 /*return*/, _a.sent()];
         }
     });
@@ -71,10 +94,35 @@ app.get("/golfer/one", function (req, res) { return __awaiter(void 0, void 0, vo
         }
     });
 }); });
-app.get("/golfer/update", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+{ /* round endpoints */ }
+app.get("/round/all", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, golferController.updateGolferById(req, res)];
+            case 0: return [4 /*yield*/, roundController.getRoundById(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.post("/round/post", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, roundController.postRound(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.put("/round/update", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, roundController.updateRound(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.delete("/round/delete", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, roundController.deleteRound(req, res)];
             case 1: return [2 /*return*/, _a.sent()];
         }
     });
@@ -83,30 +131,6 @@ app.get("/round/id", function (req, res) { return __awaiter(void 0, void 0, void
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, roundController.getRoundById(req, res)];
-            case 1: return [2 /*return*/, _a.sent()];
-        }
-    });
-}); });
-app.get("/round/post", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, roundController.postRound(req, res)];
-            case 1: return [2 /*return*/, _a.sent()];
-        }
-    });
-}); });
-app.get("/round/update", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, roundController.updateRound(req, res)];
-            case 1: return [2 /*return*/, _a.sent()];
-        }
-    });
-}); });
-app.get("/round/delete", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, roundController.deleteRound(req, res)];
             case 1: return [2 /*return*/, _a.sent()];
         }
     });

@@ -52,6 +52,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoundService = void 0;
+// import { IGolferService } from "../interfaces/golfer.interface";
+// import { IGolferRepository } from "../interfaces/golfer.interface";
 var tsyringe_1 = require("tsyringe");
 var round_repository_1 = __importDefault(require("../repositories/round.repository"));
 tsyringe_1.container.register("IRoundRepository", {
@@ -117,7 +119,7 @@ var RoundService = /** @class */ (function () {
     RoundService = __decorate([
         (0, tsyringe_1.injectable)(),
         __param(0, (0, tsyringe_1.inject)("IRoundRepository")),
-        __metadata("design:paramtypes", [Object])
+        __metadata("design:paramtypes", [round_repository_1.default])
     ], RoundService);
     return RoundService;
 }());

@@ -72,7 +72,7 @@ var GolferController = /** @class */ (function () {
                     case 1:
                         golfers = _a.sent();
                         res.status(200).send(golfers);
-                        return [2 /*return*/];
+                        return [2 /*return*/, golfers];
                 }
             });
         });
@@ -87,6 +87,7 @@ var GolferController = /** @class */ (function () {
                         return [4 /*yield*/, this.golferService.createGolfer(golfer)];
                     case 1:
                         _a.sent();
+                        res.status(200).send("golfer created with id: " + golfer.id);
                         return [2 /*return*/];
                 }
             });
@@ -94,13 +95,16 @@ var GolferController = /** @class */ (function () {
     };
     GolferController.prototype.getGolferById = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id;
+            var id, golfer;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         id = req.body.id;
                         return [4 /*yield*/, this.golferService.getGolferById(id)];
-                    case 1: return [2 /*return*/, _a.sent()];
+                    case 1:
+                        golfer = _a.sent();
+                        res.status(200).send(golfer);
+                        return [2 /*return*/];
                 }
             });
         });
@@ -116,6 +120,7 @@ var GolferController = /** @class */ (function () {
                         return [4 /*yield*/, this.golferService.updateGolferById(id, golfer)];
                     case 1:
                         _a.sent();
+                        res.status(200).send("golfer updated with id: " + id);
                         return [2 /*return*/];
                 }
             });
@@ -131,6 +136,7 @@ var GolferController = /** @class */ (function () {
                         return [4 /*yield*/, this.golferService.deleteGolferById(id)];
                     case 1:
                         _a.sent();
+                        res.status(200).send("golfer deleted with id: " + id);
                         return [2 /*return*/];
                 }
             });

@@ -54,4 +54,4 @@ app.get("/round/id", async (req: Request, res: Response) => {
   return await roundController.getRoundById(req, res);
 });
 
-app.listen(3001, () => console.log("app listening on port 3001"));
+app.listen(8080, () => console.log("app listening on port 3001"));
